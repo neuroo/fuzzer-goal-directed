@@ -1,0 +1,37 @@
+<!doctype html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cov_fuzz &mdash; UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="node_modules/materialize-css/bin/materialize.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="static/app.css"></script>
+
+    <script type="text/javascript">
+      var win = window;
+      win["COVERAGE_FUZZING" + "_HOST"] = "localhost";
+      win["COVERAGE_FUZZING" + "_WS_PORT"] = 9999; // dirty
+      win.ws_host = COVERAGE_FUZZING_HOST;
+      win.ws_port = COVERAGE_FUZZING_WS_PORT;
+      win.ws_address = 'ws://' + win.ws_host + ':' + win.ws_port;
+    </script>
+  </head>
+  <body>
+    <!--
+      Views:
+        heatmap of activity coverage: http://www.patrick-wied.at/static/heatmapjs/
+        graph (vertex/edge) of actual coverage: graph.js
+        rate of test cases and elapsed time
+        graph of evolution of scores
+        view of generated test cases
+          [-] tree view of the test cases with genealogy: http://bl.ocks.org/robschmuecker/7880033
+    -->
+    <div id="root"></div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/materialize-css/bin/materialize.js"></script>
+    <script src="static/bundle.js"></script>
+  </body>
+</html>

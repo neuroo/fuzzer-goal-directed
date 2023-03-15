@@ -1,0 +1,32 @@
+include ../rules/common.mk
+
+LOC_BUILD_DIR=../$(BUILD_DIR)/shared-data
+LOC_DIST_DIR=../$(DIST_DIR)/shared-data
+
+SRCS=$(wildcard *.cpp)
+OBJS=$(patsubst %.cpp, $(LOC_BUILD_DIR)/%.o, $(SRCS))
+EXEC=$(LOC_DIST_DIR)/$(LIB_SHARED_DATA)
+
+.PHONY: clean
+
+all: prepare clean_exec $(OBJS) $(EXEC)
+
+$(LOC_BUILD_DIR)/%.o : %.cpp
+	$(CXX) -c $(CXXFLAGS) $(INC) $< -o $@
+
+
+$(EXEC):
+	$(AR) rcs $(EXEC) $(shell find $(LOC_BUILD_DIR) -type f -name '*.o')
+
+
+prepare:
+	@mkdir -p $(LOC_BUILD_DIR)
+	@mkdir -p $(LOC_DIST_DIR)
+
+clean:
+	@rm -f $(OBJS)
+	@rm -rf $(LOC_BUILD_DIR)
+	@rm -rf $(LOC_DIST_DIR)
+
+clean_exec:
+	@rm -f $(EXEC)

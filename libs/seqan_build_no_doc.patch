@@ -1,0 +1,39 @@
+From 37b29d31a416e8ea76e3128c0d6193d4c3ed17a2 Mon Sep 17 00:00:00 2001
+From: Romain Gaucher <r@rgaucher.info>
+Date: Fri, 22 Jan 2016 11:20:40 +0100
+Subject: [PATCH] Comment out doc/manual for building system
+
+---
+ CMakeLists.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5525b9b..03e0fa5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -131,14 +131,14 @@ if (("${SEQAN_BUILD_SYSTEM}" STREQUAL "SEQAN_RELEASE") OR
+     add_subdirectory (demos)
+ endif ()
+ 
+-message (STATUS "Configuring apps")
+-add_subdirectory (apps)
+-message (STATUS "Configuring dox")
+-add_subdirectory (dox)
+-message (STATUS "Configuring manual")
+-add_subdirectory (manual)
+-message (STATUS "Configuring util/py_lib")
+-add_subdirectory (util/py_lib)
++#message (STATUS "Configuring apps")
++#add_subdirectory (apps)
++#message (STATUS "Configuring dox")
++#add_subdirectory (dox)
++#message (STATUS "Configuring manual")
++#add_subdirectory (manual)
++#message (STATUS "Configuring util/py_lib")
++#add_subdirectory (util/py_lib)
+ 
+ # ===========================================================================
+ # Register Libraries (for GUI project generators)
+-- 
+2.5.4 (Apple Git-61)
+
